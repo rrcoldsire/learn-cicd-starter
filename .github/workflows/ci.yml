@@ -37,3 +37,19 @@ jobs:
       
       - name: Run Go fmt
         run: test -z $(go fmt ./...)
+  
+  lint:
+    name: Lint
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check out code
+        uses: actions/checkout@v4
+
+      - name: Set up Go
+        uses: actions/setup-go@v5
+
+      - name: Run staticcheck
+        uses: dominikh/staticcheck@v1
+        with:
+          version: latest
